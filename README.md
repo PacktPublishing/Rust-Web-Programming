@@ -11,19 +11,19 @@ https://www.rust-lang.org/tools/install
 
 ## Running Code 
 
-The code has to be compiled. In order to do this we navigate to the file we want to run. For this example we're using ```strings.rs``` in chapter_one. Once we've navigated there we compile the file using the ```rustc``` command:
+The code has to be compiled. In order to do this, we navigate to the file we want to run. For this example, we're using ```strings.rs``` in chapter_one. Once we've navigated there, we compile the file using the ```rustc``` command:
 
 ```
 rustc strings.rs 
 ```
 
-On windows we then run the exe file:
+On Windows, we then run the exe file:
 
 ```
 .\strings.exe
 ```
 
-For linux and mac we run using the following:
+For Linux and Mac, we run using the following:
 
 ```
 ./strings
