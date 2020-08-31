@@ -1,5 +1,4 @@
 use super::base::Base;
-use super::traits::to_do_item::ToDoItem;
 
 /// This struct defines a to do item for a Pending to do item.
 ///
@@ -24,5 +23,3 @@ impl Pending {
         return Pending{super_struct: base}
     }
 }
-
-impl ToDoItem for Pending {}

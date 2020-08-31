@@ -30,7 +30,7 @@ fn main() {
     // write the map to the JSON file
     write_to_file(String::from("./state.json"), &mut state);
 
-
+    // creates a pending item called washing
     let to_do_item: Result<ItemTypes, &'static str> = to_do_factory(
         String::from("pending"), String::from("washing")
     );

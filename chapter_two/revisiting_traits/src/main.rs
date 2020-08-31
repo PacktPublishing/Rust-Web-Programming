@@ -32,11 +32,11 @@ fn main() {
 
 
     let to_do_item: Result<ItemTypes, &'static str> = to_do_factory(
-        String::from("pending"), String::from("washing")
+        &String::from("pending"), String::from("washing")
     );
 
     match to_do_item.unwrap() {
-        ItemTypes::Pending(item) => item.create(&item.super_struct.title),
+        ItemTypes::Pending(item) => item.create(&item.super_struct.title, &item.super_struct.status, &mut state),
         ItemTypes::Done(item) => println!("it's a done item with the title: {}", item.super_struct.title)
     }
 }
