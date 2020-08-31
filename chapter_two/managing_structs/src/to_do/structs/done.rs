@@ -1,5 +1,4 @@
 use super::base::Base;
-use super::traits::to_do_item::ToDoItem;
 
 
 /// This struct defines a to do item for a done to do item.
@@ -25,5 +24,3 @@ impl Done {
         return Done{super_struct: base}
     }
 }
-
-impl ToDoItem for Done {}
