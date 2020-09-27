@@ -14,7 +14,7 @@ pub enum ItemTypes {
 /// * item_title (String): the title for the item to be built
 ///
 /// # Returns
-/// (Result<ItemTypes, &'static str>):
+/// (Result<ItemTypes, &'templates str>):
 pub fn to_do_factory(item_type: &String, item_title: String) -> Result<ItemTypes, &'static str> {
     if item_type == "pending" {
         let pending_item = Pending::new(item_title);
