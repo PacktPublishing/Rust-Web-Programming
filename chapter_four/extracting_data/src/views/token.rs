@@ -7,7 +7,7 @@ use actix_web::dev::ServiceRequest;
 /// * password (String): password to be checked
 ///
 /// # Returns
-/// * (Result<String, &'static str>): password if correct, error message if not
+/// * (Result<String, &'templates str>): password if correct, error message if not
 fn check_password(password: String) -> Result<String, &'static str> {
     if password == "token" {
         return Ok(password)
@@ -22,7 +22,7 @@ fn check_password(password: String) -> Result<String, &'static str> {
 /// * request (&ServiceRequest): the request passed through the view function
 ///
 /// # Returns
-/// * (Result<String, &'static str>): processed token if successful, error message if not
+/// * (Result<String, &'templates str>): processed token if successful, error message if not
 fn extract_header_token(request: &ServiceRequest) -> Result<String, &'static str> {
 
     match request.headers().get("user-token") {
@@ -43,7 +43,7 @@ fn extract_header_token(request: &ServiceRequest) -> Result<String, &'static str
 /// * request (&ServiceRequest): the request passed through the view function
 ///
 /// # Returns
-/// * (Result<String, &'static str>): processed token if successful, error message if not
+/// * (Result<String, &'templates str>): processed token if successful, error message if not
 pub fn process_token(request: &ServiceRequest) -> Result<String, &'static str> {
     match extract_header_token(request) {
         Ok(token) => {
