@@ -1,0 +1,5 @@
+CREATE TABLE to_do_items (
+  id SERIAL PRIMARY KEY,
+  title VARCHAR NOT NULL,
+  status VARCHAR NOT NULL
+)

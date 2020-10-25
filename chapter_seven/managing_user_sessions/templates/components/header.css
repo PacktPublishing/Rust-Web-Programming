@@ -1,0 +1,11 @@
+.header {
+    background: #034f84;
+    margin-bottom: 0.3rem;
+}
+.header p {
+    color: white;
+    display: inline-block;
+    margin: 0.5rem;
+    margin-right: 0.4rem;
+    margin-left: 0.4rem;
+}
