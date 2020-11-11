@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charSet="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta httpEquiv="X-UA-Compatiable" content="ie=edge"/>
+        <meta name="description" content="This is a simple to do app"/>
+        <title>To Do App</title>
+    </head>
+    <style>
+        {{BASE_CSS}}
+        {{CSS}}
+        HEADER_CSS
+    </style>
+    <body>
+        <div class="mainContainer">
+            HEADER_HTML
+            <h1>Done Items</h1>
+            <div id="doneItems"></div>
+            <h1>To Do Items</h1>
+            <div id="pendingItems"></div>
+            <div class="inputContainer">
+                <input type="text" id="name" placeholder="create to do item">
+                <div class="actionButton" id="create-button" value="Send">Create</div>
+            </div>
+        </div>
+    </body>
+    <script>
+        {{JAVASCRIPT}}
+    </script>
+</html>

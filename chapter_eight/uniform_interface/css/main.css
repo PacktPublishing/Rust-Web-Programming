@@ -1,0 +1,43 @@
+.itemContainer {
+    background: #034f84;
+    margin: 0.3rem;
+}
+
+.itemContainer:hover {
+    background: #034f99;
+}
+
+.itemContainer p {
+    color: white;
+    display: inline-block;
+    margin: 0.5rem;
+    margin-right: 0.4rem;
+    margin-left: 0.4rem;
+}
+
+.actionButton {
+    display: inline-block;
+    float: right;
+    background: #f7786b;
+    border: none;
+    padding: 0.5rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    color: white;
+}
+
+.actionButton:hover {
+    background: #f7686b;
+    color: black;
+}
+
+.inputContainer {
+    background: #034f84;
+    margin: 0.3rem;
+    margin-top: 2rem;
+}
+
+.inputContainer input {
+    display: inline-block;
+    margin: 0.4rem;
+}
