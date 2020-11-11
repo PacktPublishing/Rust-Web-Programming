@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <meta charSet="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta httpEquiv="X-UA-Compatiable" content="ie=edge"/>
+        <meta name="description" content="This is a simple to do app"/>
+        <title>To Do App</title>
+    </head>
+    <style>
+        {{BASE_CSS}}
+        {{CSS}}
+        .loginButtonStyle {
+            display: inline-block;
+            background: #f7786b;
+            border: none;
+            padding: 0.5rem;
+            padding-left: 2rem;
+            padding-right: 2rem;
+            color: white;
+        }
+        .loginButtonStyle:hover {
+            background: #f7686b;
+            color: black;
+        }
+    </style>
+    <body>
+        <div class="mainContainer">
+            <h2 class="ContainerTitle" style="text-align:center;">Login</h2>
+            <p id="loginMessage" class="FeedbackMessage" style="text-align:center;"></p>
+            <form style="text-align:center;" action="submit">
+                <input type="text" value="" placeholder="Username" class="formInputContainer" id="defaultLoginFormUsername"><br>
+                <p></p>
+                <input type="password" value="" placeholder="Password" class="formInputContainer" id="defaultLoginFormPassword"><br><br>
+                <input type="button" value="Submit" class="loginButtonStyle" id="loginButton" style="text-align:center;">
+            </form>
+        </div>
+    </body>
+    <script>
+        {{JAVASCRIPT}}
+    </script>
+</html>

@@ -29,6 +29,7 @@ async fn main() -> std::io::Result<()> {
                     }
                 }
                 let fut = srv.call(req);
+
                 async {
                     let result = fut.await?;
                     Ok(result)
