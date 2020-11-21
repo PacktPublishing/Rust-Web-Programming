@@ -19,7 +19,7 @@ use super::to_do::structs::traits::edit::Edit;
 ///
 /// # Returns
 /// None
-pub fn process_pending(item: Pending, command: String, state: &Map<String, Value>) {
+fn process_pending(item: Pending, command: String, state: &Map<String, Value>) {
     let mut state = state.clone();
     match command.as_str() {
         "get" => item.get(&item.super_struct.title, &state),
@@ -40,7 +40,7 @@ pub fn process_pending(item: Pending, command: String, state: &Map<String, Value
 ///
 /// # Returns
 /// None
-pub fn process_done(item: Done, command: String, state: &Map<String, Value>) {
+fn process_done(item: Done, command: String, state: &Map<String, Value>) {
     let mut state = state.clone();
     match command.as_str() {
         "get" => item.get(&item.super_struct.title, &state),
