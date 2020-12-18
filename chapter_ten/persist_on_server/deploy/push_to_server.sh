@@ -13,7 +13,7 @@ ssh -i "./rust_app.pem" -t ec2-user@3.8.1.220 << EOF
   docker container rm rust_app
   docker image rm maxwellflitton/actix_web_application
   docker-compose up -d
-  docker exec "rust_app" bash -c "echo 'DATABASE_URL=postgres://username:password@todo.cvrb7bxugzbi.eu-west-2.rds.amazonaws.com/todo' > .env"
+  docker exec "rust_app" bash -c "echo 'DATABASE_URL=postgres://username:password@some_url_to_database/todo' > .env"
   docker container exec -t rust_app diesel setup
   docker container exec -t rust_app diesel migration run
 	rm -r nginx/
