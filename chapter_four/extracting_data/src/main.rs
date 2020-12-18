@@ -21,7 +21,7 @@ async fn main() -> std::io::Result<()> {
                         Err(message) => println!("token error: {}", message)
                     }
                 }
-                let fut = srv.call(req);
+                return srv.call(req);
                 async {
                     let result = fut.await?;
                     Ok(result)

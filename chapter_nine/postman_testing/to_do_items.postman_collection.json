@@ -1,0 +1,697 @@
+{
+  "info": {
+    "_postman_id": "bab28260-c096-49b9-81e6-b56fc5f60e9d",
+    "name": "to_do_items",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "1_create",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "128ff3c0-a508-441a-b0b9-da6902a639b7",
+            "exec": [
+              "var result = pm.response.json()",
+              "",
+              "pm.test(\"response is ok\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "pm.test(\"returns one pending item\", function(){",
+              "    if (result[\"pending_items\"].length !== 1){",
+              "        throw new Error(\"returns the wrong number of pending items\");",
+              "    }",
+              "})",
+              "pm.test(\"Pending item has the correct title\", function(){",
+              "    if (result[\"pending_items\"][0][\"title\"] !== \"washing\"){",
+              "        throw new Error(\"title of the pending item is not 'washing'\");",
+              "    }",
+              "})",
+              "pm.test(\"Pending item has the correct ststus\", function(){",
+              "    if (result[\"pending_items\"][0][\"status\"] !== \"pending\"){",
+              "        throw new Error(\"status of the pending item is not 'pending'\");",
+              "    }",
+              "})",
+              "pm.test(\"returns zero done items\", function(){",
+              "    if (result[\"done_items\"].length !== 0){",
+              "        throw new Error(\"returns the wrong number of done items\");",
+              "    }",
+              "})",
+              "pm.test(\"checking pending item count\", function(){",
+              "    if (result[\"pending_item_count\"].length === 1){",
+              "        throw new Error(\"pending_item_count needs to be one\");",
+              "    }",
+              "})",
+              "pm.test(\"checking done item count\", function(){",
+              "    if (result[\"pending_item_count\"].length === 0){",
+              "        throw new Error(\"done_item_count needs to be zero\");",
+              "    }",
+              "})"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "user-token",
+            "value": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2fQ.uVo7u877IT2GEMpB_gxVtxhMAYAJD8W_XiUoNvR7_iM",
+            "type": "text",
+            "disabled": true
+          }
+        ],
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/v1/item/create/washing",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "v1",
+            "item",
+            "create",
+            "washing"
+          ]
+        },
+        "description": "create a to-do item, and then check the return to see if it is stored correctly "
+      },
+      "response": []
+    },
+    {
+      "name": "2_create",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "8a12d102-53f4-4ef1-9db6-c134d14e1997",
+            "exec": [
+              "var result = pm.response.json()",
+              "",
+              "pm.test(\"response is ok\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "pm.test(\"returns two pending item\", function(){",
+              "    if (result[\"pending_items\"].length !== 2){",
+              "        throw new Error(\"returns the wrong number of pending items\");",
+              "    }",
+              "})",
+              "pm.test(\"Pending item has the correct title\", function(){",
+              "    if (result[\"pending_items\"][0][\"title\"] !== \"washing\"){",
+              "        throw new Error(\"title of the pending item is not 'washing'\");",
+              "    }",
+              "})",
+              "pm.test(\"Pending item has the correct ststus\", function(){",
+              "    if (result[\"pending_items\"][0][\"status\"] !== \"pending\"){",
+              "        throw new Error(\"status of the pending item is not 'pending'\");",
+              "    }",
+              "})",
+              "pm.test(\"Pending item has the correct title\", function(){",
+              "    if (result[\"pending_items\"][1][\"title\"] !== \"cooking\"){",
+              "        throw new Error(\"title of the pending item is not 'cooking'\");",
+              "    }",
+              "})",
+              "pm.test(\"Pending item has the correct ststus\", function(){",
+              "    if (result[\"pending_items\"][1][\"status\"] !== \"pending\"){",
+              "        throw new Error(\"status of the pending item is not 'pending'\");",
+              "    }",
+              "})",
+              "pm.test(\"returns zero done items\", function(){",
+              "    if (result[\"done_items\"].length !== 0){",
+              "        throw new Error(\"returns the wrong number of done items\");",
+              "    }",
+              "})",
+              "pm.test(\"checking pending item count\", function(){",
+              "    if (result[\"pending_item_count\"].length === 1){",
+              "        throw new Error(\"pending_item_count needs to be one\");",
+              "    }",
+              "})",
+              "pm.test(\"checking done item count\", function(){",
+              "    if (result[\"pending_item_count\"].length === 0){",
+              "        throw new Error(\"done_item_count needs to be zero\");",
+              "    }",
+              "})"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/v1/item/create/cooking",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "v1",
+            "item",
+            "create",
+            "cooking"
+          ]
+        },
+        "description": "create another to-do item checking the return to see if the previous one is stored and that the process can handle two "
+      },
+      "response": []
+    },
+    {
+      "name": "3_create",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "4bd7ef26-98ad-499d-b40f-48f297a14ec2",
+            "exec": [
+              "var result = pm.response.json()",
+              "",
+              "pm.test(\"response is ok\", function () {",
+              "    pm.response.to.have.status(200);",
+              "}); pm.test(\"returns two pending item\", function(){",
+              "    if (result[\"pending_items\"].length !== 2){",
+              "        throw new Error(\"returns the wrong number of pending items\");",
+              "    }",
+              "}); pm.test(\"Pending item has the correct title\", function(){",
+              "    if (result[\"pending_items\"][0][\"title\"] !== \"washing\"){",
+              "        throw new Error(\"title of the pending item is not 'washing'\");",
+              "    }",
+              "}); pm.test(\"Pending item has the correct ststus\", function(){",
+              "    if (result[\"pending_items\"][0][\"status\"] !== \"pending\"){",
+              "        throw new Error(\"status of the pending item is not 'pending'\");",
+              "    }",
+              "}); pm.test(\"Pending item has the correct title\", function(){",
+              "    if (result[\"pending_items\"][1][\"title\"] !== \"cooking\"){",
+              "        throw new Error(\"title of the pending item is not 'cooking'\");",
+              "    }",
+              "}); pm.test(\"Pending item has the correct ststus\", function(){",
+              "    if (result[\"pending_items\"][1][\"status\"] !== \"pending\"){",
+              "        throw new Error(\"status of the pending item is not 'pending'\");",
+              "    }",
+              "}); pm.test(\"returns zero done items\", function(){",
+              "    if (result[\"done_items\"].length !== 0){",
+              "        throw new Error(\"returns the wrong number of done items\");",
+              "    }",
+              "}); pm.test(\"checking pending item count\", function(){",
+              "    if (result[\"pending_item_count\"].length === 1){",
+              "        throw new Error(\"pending_item_count needs to be one\");",
+              "    }",
+              "}); pm.test(\"checking done item count\", function(){",
+              "    if (result[\"pending_item_count\"].length === 0){",
+              "        throw new Error(\"done_item_count needs to be zero\");",
+              "    }",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/v1/item/create/cooking",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "v1",
+            "item",
+            "create",
+            "cooking"
+          ]
+        },
+        "description": "create another to-do item with the same title as one of the other items checking the response to ensure that our application is not storing duplicate to-do items with the same title "
+      },
+      "response": []
+    },
+    {
+      "name": "4_edit",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "7b3cab2a-e0b3-4d29-9d5d-7f33ec2dec9c",
+            "exec": [
+              "var result = pm.response.json()",
+              "",
+              "pm.test(\"response is ok\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "pm.test(\"returns one pending item\", function(){",
+              "    if (result[\"pending_items\"].length !== 1){",
+              "        throw new Error(\"returns the wrong number of pending items\");",
+              "    }",
+              "})",
+              "pm.test(\"Done item has the correct title\", function(){",
+              "    if (result[\"done_items\"][0][\"title\"] !== \"washing\"){",
+              "        throw new Error(\"title of the pending item is not 'washing'\");",
+              "    }",
+              "})",
+              "pm.test(\"Done item has the correct ststus\", function(){",
+              "    if (result[\"done_items\"][0][\"status\"] !== \"done\"){",
+              "        throw new Error(\"status of the pending item is not 'pending'\");",
+              "    }",
+              "})",
+              "pm.test(\"Pending item has the correct title\", function(){",
+              "    if (result[\"pending_items\"][0][\"title\"] !== \"cooking\"){",
+              "        throw new Error(\"title of the pending item is not 'cooking'\");",
+              "    }",
+              "})",
+              "pm.test(\"Pending item has the correct ststus\", function(){",
+              "    if (result[\"pending_items\"][0][\"status\"] !== \"pending\"){",
+              "        throw new Error(\"status of the pending item is not 'pending'\");",
+              "    }",
+              "})",
+              "pm.test(\"returns zero done items\", function(){",
+              "    if (result[\"done_items\"].length !== 1){",
+              "        throw new Error(\"returns the wrong number of done items\");",
+              "    }",
+              "})",
+              "pm.test(\"checking pending item count\", function(){",
+              "    if (result[\"pending_item_count\"].length === 1){",
+              "        throw new Error(\"pending_item_count needs to be one\");",
+              "    }",
+              "})",
+              "pm.test(\"checking done item count\", function(){",
+              "    if (result[\"pending_item_count\"].length === 1){",
+              "        throw new Error(\"done_item_count needs to be zero\");",
+              "    }",
+              "})"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"title\": \"washing\",\n    \"status\": \"pending\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/v1/item/edit",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "v1",
+            "item",
+            "edit"
+          ]
+        },
+        "description": "edit an item checking the response to see if the edited item has been changed to “done” and that it is stored in the correct list."
+      },
+      "response": []
+    },
+    {
+      "name": "5_edit",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "c3b39a59-b12f-4ca0-b2c3-4448d7d0084d",
+            "exec": [
+              "var result = pm.response.json()",
+              "",
+              "pm.test(\"response is ok\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "pm.test(\"returns one pending item\", function(){",
+              "    if (result[\"pending_items\"].length !== 0){",
+              "        throw new Error(\"returns the wrong number of pending items\");",
+              "    }",
+              "})",
+              "pm.test(\"Done item has the correct title\", function(){",
+              "    if (result[\"done_items\"][0][\"title\"] !== \"washing\"){",
+              "        throw new Error(\"title of the pending item is not 'washing'\");",
+              "    }",
+              "})",
+              "pm.test(\"Done item has the correct ststus\", function(){",
+              "    if (result[\"done_items\"][0][\"status\"] !== \"done\"){",
+              "        throw new Error(\"status of the pending item is not 'pending'\");",
+              "    }",
+              "})",
+              "pm.test(\"Pending item has the correct title\", function(){",
+              "    if (result[\"done_items\"][1][\"title\"] !== \"cooking\"){",
+              "        throw new Error(\"title of the pending item is not 'cooking'\");",
+              "    }",
+              "})",
+              "pm.test(\"Pending item has the correct ststus\", function(){",
+              "    if (result[\"done_items\"][1][\"status\"] !== \"done\"){",
+              "        throw new Error(\"status of the pending item is not 'pending'\");",
+              "    }",
+              "})",
+              "pm.test(\"returns two done items\", function(){",
+              "    if (result[\"done_items\"].length !== 2){",
+              "        throw new Error(\"returns the wrong number of done items\");",
+              "    }",
+              "})",
+              "pm.test(\"checking pending item count\", function(){",
+              "    if (result[\"pending_item_count\"].length === 1){",
+              "        throw new Error(\"pending_item_count needs to be one\");",
+              "    }",
+              "})",
+              "pm.test(\"checking done item count\", function(){",
+              "    if (result[\"pending_item_count\"].length === 1){",
+              "        throw new Error(\"done_item_count needs to be zero\");",
+              "    }",
+              "})"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"title\": \"cooking\",\n    \"status\": \"pending\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/v1/item/edit",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "v1",
+            "item",
+            "edit"
+          ]
+        },
+        "description": "edit the second item to see if the edit effect is permanent and that the “done” list supports both items "
+      },
+      "response": []
+    },
+    {
+      "name": "6_edit",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "577ac9a6-469f-45da-adf1-0f3921d51749",
+            "exec": [
+              "var result = pm.response.json()",
+              "",
+              "pm.test(\"response is ok\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "pm.test(\"returns one pending item\", function(){",
+              "    if (result[\"pending_items\"].length !== 0){",
+              "        throw new Error(\"returns the wrong number of pending items\");",
+              "    }",
+              "})",
+              "pm.test(\"Done item has the correct title\", function(){",
+              "    if (result[\"done_items\"][0][\"title\"] !== \"washing\"){",
+              "        throw new Error(\"title of the pending item is not 'washing'\");",
+              "    }",
+              "})",
+              "pm.test(\"Done item has the correct ststus\", function(){",
+              "    if (result[\"done_items\"][0][\"status\"] !== \"done\"){",
+              "        throw new Error(\"status of the pending item is not 'pending'\");",
+              "    }",
+              "})",
+              "pm.test(\"Pending item has the correct title\", function(){",
+              "    if (result[\"done_items\"][1][\"title\"] !== \"cooking\"){",
+              "        throw new Error(\"title of the pending item is not 'cooking'\");",
+              "    }",
+              "})",
+              "pm.test(\"Pending item has the correct ststus\", function(){",
+              "    if (result[\"done_items\"][1][\"status\"] !== \"done\"){",
+              "        throw new Error(\"status of the pending item is not 'pending'\");",
+              "    }",
+              "})",
+              "pm.test(\"returns two done items\", function(){",
+              "    if (result[\"done_items\"].length !== 2){",
+              "        throw new Error(\"returns the wrong number of done items\");",
+              "    }",
+              "})",
+              "pm.test(\"checking pending item count\", function(){",
+              "    if (result[\"pending_item_count\"].length === 1){",
+              "        throw new Error(\"pending_item_count needs to be one\");",
+              "    }",
+              "})",
+              "pm.test(\"checking done item count\", function(){",
+              "    if (result[\"pending_item_count\"].length === 1){",
+              "        throw new Error(\"done_item_count needs to be zero\");",
+              "    }",
+              "})"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"title\": \"cooking\",\n    \"status\": \"pending\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/v1/item/edit",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "v1",
+            "item",
+            "edit"
+          ]
+        },
+        "description": "edit the second item to see if the edit effect is permanent and that the “done” list supports both items "
+      },
+      "response": []
+    },
+    {
+      "name": "7_delete",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "fda50ca3-b1bf-40d9-b19b-8e78392b4128",
+            "exec": [
+              "var result = pm.response.json()",
+              "",
+              "pm.test(\"response is ok\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "pm.test(\"returns one pending item\", function(){",
+              "    if (result[\"pending_items\"].length !== 0){",
+              "        throw new Error(\"returns the wrong number of pending items\");",
+              "    }",
+              "})",
+              "pm.test(\"Done item has the correct title\", function(){",
+              "    if (result[\"done_items\"][0][\"title\"] !== \"washing\"){",
+              "        throw new Error(\"title of the pending item is not 'washing'\");",
+              "    }",
+              "})",
+              "pm.test(\"Done item has the correct ststus\", function(){",
+              "    if (result[\"done_items\"][0][\"status\"] !== \"done\"){",
+              "        throw new Error(\"status of the pending item is not 'pending'\");",
+              "    }",
+              "})",
+              "pm.test(\"returns one done item\", function(){",
+              "    if (result[\"done_items\"].length !== 1){",
+              "        throw new Error(\"returns the wrong number of done items\");",
+              "    }",
+              "})",
+              "pm.test(\"checking pending item count\", function(){",
+              "    if (result[\"pending_item_count\"] !== 0){",
+              "        throw new Error(\"pending_item_count needs to be one\");",
+              "    }",
+              "})",
+              "pm.test(\"checking done item count\", function(){",
+              "    if (result[\"done_item_count\"] !== 1){",
+              "        throw new Error(\"done_item_count needs to be zero\");",
+              "    }",
+              "})"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"title\": \"cooking\",\n    \"status\": \"pending\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/v1/item/delete",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "v1",
+            "item",
+            "delete"
+          ]
+        },
+        "description": "delete one to-do item to see if the response no longer this to-do item has stored in the database "
+      },
+      "response": []
+    },
+    {
+      "name": "8_delete",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "89edb151-6b1d-4ae2-8e5e-d0e34889c7ee",
+            "exec": [
+              "var result = pm.response.json()",
+              "",
+              "pm.test(\"response is ok\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "pm.test(\"returns one pending item\", function(){",
+              "    if (result[\"pending_items\"].length !== 0){",
+              "        throw new Error(\"returns the wrong number of pending items\");",
+              "    }",
+              "})",
+              "pm.test(\"returns one done item\", function(){",
+              "    if (result[\"done_items\"].length !== 0){",
+              "        throw new Error(\"returns the wrong number of done items\");",
+              "    }",
+              "})",
+              "pm.test(\"checking pending item count\", function(){",
+              "    if (result[\"pending_item_count\"] !== 0){",
+              "        throw new Error(\"pending_item_count needs to be one\");",
+              "    }",
+              "})",
+              "pm.test(\"checking done item count\", function(){",
+              "    if (result[\"done_item_count\"] !== 0){",
+              "        throw new Error(\"done_item_count needs to be zero\");",
+              "    }",
+              "})"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"title\": \"washing\",\n    \"status\": \"pending\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/v1/item/delete",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "v1",
+            "item",
+            "delete"
+          ]
+        },
+        "description": "delete the final to-do item checking the response to see if there is no items left showing that the delete action is permanent "
+      },
+      "response": []
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "value",
+        "value": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2fQ.uVo7u877IT2GEMpB_gxVtxhMAYAJD8W_XiUoNvR7_iM",
+        "type": "string"
+      },
+      {
+        "key": "key",
+        "value": "user-token",
+        "type": "string"
+      }
+    ]
+  },
+  "protocolProfileBehavior": {}
+}
