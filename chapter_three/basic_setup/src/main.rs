@@ -23,7 +23,7 @@ async fn main() -> std::io::Result<()> {
         return app
     })
         .bind("127.0.0.1:8000")?
-        .workers(4)
+        .workers()
         .run()
         .await
 }

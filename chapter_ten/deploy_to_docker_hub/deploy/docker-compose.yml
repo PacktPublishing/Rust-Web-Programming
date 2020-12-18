@@ -1,0 +1,37 @@
+version: "3.7"
+
+services:
+
+  rust_app:
+    container_name: rust_app
+    image: "maxwellflitton/actix_web_application:latest"
+    restart: always
+    ports:
+      - "8000:8000"
+    expose:
+      - 8000
+
+  nginx:
+    container_name: 'nginx-rust'
+    image: "nginx:latest"
+    ports:
+      - "80:80"
+    links:
+      - rust_app
+    depends_on:
+      - rust_app
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+
+  postgres:
+    container_name: 'to-do-postgres-production'
+    image: 'postgres:11.2'
+    restart: always
+    ports:
+      - '5432:5432'
+    environment:
+      - 'POSTGRES_USER=username'
+      - 'POSTGRES_DB=to_do'
+      - 'POSTGRES_PASSWORD=password'
+    expose:
+      - 5432

@@ -55,7 +55,14 @@
       ],
       "request": {
         "method": "POST",
-        "header": [],
+        "header": [
+          {
+            "key": "user-token",
+            "value": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2fQ.uVo7u877IT2GEMpB_gxVtxhMAYAJD8W_XiUoNvR7_iM",
+            "type": "text",
+            "disabled": true
+          }
+        ],
         "url": {
           "raw": "http://127.0.0.1:8000/api/v1/item/create/washing",
           "protocol": "http",
@@ -667,41 +674,6 @@
           ]
         },
         "description": "delete the final to-do item checking the response to see if there is no items left showing that the delete action is permanent "
-      },
-      "response": []
-    },
-    {
-      "name": "9_delete",
-      "request": {
-        "method": "POST",
-        "header": [],
-        "body": {
-          "mode": "raw",
-          "raw": "{\n    \"title\": \"washing\",\n    \"status\": \"pending\"\n}",
-          "options": {
-            "raw": {
-              "language": "json"
-            }
-          }
-        },
-        "url": {
-          "raw": "http://127.0.0.1:8000/api/v1/item/delete",
-          "protocol": "http",
-          "host": [
-            "127",
-            "0",
-            "0",
-            "1"
-          ],
-          "port": "8000",
-          "path": [
-            "api",
-            "v1",
-            "item",
-            "delete"
-          ]
-        },
-        "description": "one final delete acting on an item that does not exist to see if the API handles an incorrect delete "
       },
       "response": []
     }
