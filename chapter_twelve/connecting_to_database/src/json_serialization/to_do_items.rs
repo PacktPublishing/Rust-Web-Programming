@@ -1,8 +1,8 @@
 use std::vec::Vec;
 
-use actix_web::{Responder, Error, HttpResponse, HttpRequest};
+// use actix_web::{Responder, Error, HttpResponse, HttpRequest};
 use serde::Serialize;
-use futures::future::{ready, Ready};
+// use futures::future::{ready, Ready};
 
 use crate::to_do::ItemTypes;
 use crate::to_do::structs::base::Base;
@@ -50,24 +50,5 @@ impl ToDoItems {
             pending_items: pending_array_buffer, done_item_count: done_count,
             pending_item_count: pending_count, done_items: done_array_buffer
         }
-    }
-}
-
-impl Responder for ToDoItems {
-    type Error = Error;
-    type Future = Ready<Result<HttpResponse, Error>>;
-
-    /// This function gets fired when the struct is being returned in an actix view.
-    ///
-    /// # Arguments
-    /// * _req (&HttpRequest): the request belonging to the view
-    ///
-    /// # Returns
-    /// * (Self::Future): a OK HTTP response with the serialized struct in the body
-    fn respond_to(self, _req: &HttpRequest) -> Self::Future {
-        let body = serde_json::to_string(&self).unwrap();
-        ready(Ok(HttpResponse::Ok()
-            .content_type("application/json")
-            .body(body)))
     }
 }
