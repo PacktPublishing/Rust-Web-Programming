@@ -3,40 +3,37 @@ use warp::Filter;
 extern crate pretty_env_logger;
 #[macro_use] extern crate log;
 #[macro_use] extern crate diesel;
+use diesel::prelude::*;
 extern crate dotenv;
 
+mod schema;
 mod to_do;
 mod json_serialization;
 mod database;
 mod models;
-mod schema;
 
-// use crate::diesel;
-// use diesel::prelude::*;
+use std::vec::Vec;
 
-// use std::vec::Vec;
-//
-// use to_do::to_do_factory;
-// use json_serialization::to_do_items::ToDoItems;
-//
-// use database::establish_connection;
-// use models::item::item::Item;
-// use schema::to_do;
-//
-//
-// /// Gets all the to do items from the state JSON file and processes them to be serialized.
-// ///
-// /// # Arguments
-// /// user_id (&i32): the user id belonging to the request
-// ///
-// /// # Returns
-// /// * (ToDoItems): to do items sorted into Done and Pending with count numbers
+use to_do::to_do_factory;
+use database::establish_connection;
+use models::item::item::Item;
+use json_serialization::to_do_items::ToDoItems;
+
+
+
+/// Gets all the to do items from the state JSON file and processes them to be serialized.
+///
+/// # Arguments
+/// user_id (&i32): the user id belonging to the request
+///
+/// # Returns
+/// * (ToDoItems): to do items sorted into Done and Pending with count numbers
 // pub fn return_state(user_id: &i32) -> ToDoItems {
 //     let connection = establish_connection();
 //
-//     let items = to_do::table
-//         .order(to_do::columns::id.asc())
-//         .filter(to_do::columns::user_id.eq(&user_id))
+//     let items = schema::to_do::table
+//         .order(schema::to_do::columns::id.asc())
+//         .filter(schema::to_do::columns::user_id.eq(&user_id))
 //         .load::<Item>(&connection)
 //         .unwrap();
 //
@@ -67,12 +64,32 @@ async fn main() {
             return warp::reply::json(&result)
         });
 
+    let get_items = warp::path!("user" / i32)
+        .map(|user_id: i32| {
+            let connection = establish_connection();
+
+            let items = schema::to_do::table
+                .order(schema::to_do::columns::id.asc())
+                .filter(schema::to_do::columns::user_id.eq(&user_id))
+                .load::<Item>(&connection)
+                .unwrap();
+
+            let mut array_buffer = Vec::new();
+
+            for item in items {
+                let item = to_do_factory(&item.status, item.title).unwrap();
+                array_buffer.push(item);
+            }
+            return warp::reply::json(&ToDoItems::new(array_buffer))
+        });
+
     let log = warp::log("to_do::api");
 
     let routes = warp::get().and(
             home
             .or(greet)
             .or(add)
+            .or(get_items)
     ).with(log);
 
     warp::serve(routes)

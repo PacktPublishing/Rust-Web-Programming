@@ -9,7 +9,7 @@ edition = "2018"
 [dependencies]
 actix-web = "2"
 actix-rt = "1.0"
-serde_json = { version = "1.0", default-features = false, features = ["alloc"] }
+serde_json = { version = "1.0.59", default-features = false, features = ["alloc"] }
 futures = "0.3.7"
 serde = "1"
 actix-service = "1.0.6"
