@@ -29,3 +29,10 @@ For Linux and Mac, we run using the following:
 ./strings
 ```
 
+## JSON Web Token
+Please note, Chapter 11, Understanding Rocket Web Framework, and the Appendix A, both utlize a JSON web token. However, the token is not created in the chapter and appendix. Below
+is a token for a user with the ID of one. This can be copied and pasted for use in the exercises:
+
+```
+eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2fQ.uVo7u877IT2GEMpB_gxVtxhMAYAJD8W_XiUoNvR7_iM
+```
