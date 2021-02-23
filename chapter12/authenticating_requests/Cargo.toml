@@ -1,0 +1,25 @@
+[package]
+name = "warp_server"
+version = "0.1.0"
+authors = ["maxwellflitton"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+tokio = { version = "0.2", features = ["full"] }
+warp = "0.2"
+log = "0.4"
+pretty_env_logger = "0.3"
+
+serde = { version = "1.0.1", features = ["derive"] }
+serde_json = "1.0.4"
+futures = "0.3.7"
+diesel = { version = "1.4.4", features = ["postgres"] }
+bcrypt = "0.8"
+uuid = { version = "0.8", features = ["serde", "v4"] }
+dotenv = "0.15.0"
+
+jwt = "0.9.0"
+hmac = "0.8.1"
+sha2 = "0.9"
