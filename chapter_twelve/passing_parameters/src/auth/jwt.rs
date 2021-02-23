@@ -65,3 +65,63 @@ impl JwtToken {
         }
     }
 }
+
+#[cfg(test)]
+mod jwt_tests {
+
+    use super::JwtToken;
+    use actix_web::test;
+
+    #[test]
+    fn encode_decode() {
+        let encoded_token: String = JwtToken::encode(32);
+        let decoded_token: JwtToken = JwtToken::decode(encoded_token).unwrap();
+        assert_eq!(32, decoded_token.user_id);
+    }
+
+    #[test]
+    fn decode_incorrect_token() {
+        let encoded_token: String = String::from("test");
+
+        match JwtToken::decode(encoded_token) {
+            Err(message) => assert_eq!("Could not decode", message),
+            _ => panic!("Incorrect token should not be able to be encoded")
+        }
+    }
+
+    #[test]
+    fn decode_from_request_with_correct_token() {
+        let encoded_token: String = JwtToken::encode(32);
+        let request = test::TestRequest::with_header("user-token", encoded_token).to_http_request();
+        let out_come = JwtToken::decode_from_request(request);
+
+        match out_come {
+            Ok(token) => assert_eq!(32, token.user_id),
+            _ => panic!("Token is not returned when it should be")
+        }
+
+    }
+
+    #[test]
+    fn decode_from_request_with_no_token() {
+        let request = test::TestRequest::with_header("test", "test").to_http_request();
+        let out_come = JwtToken::decode_from_request(request);
+
+        match out_come {
+            Err(message) => assert_eq!("there is no token", message),
+            _ => panic!("Token should not be returned when it is not present in the headers")
+        }
+    }
+
+    #[test]
+    fn decode_from_request_with_false_token() {
+        let request = test::TestRequest::with_header("user-token", "test").to_http_request();
+        let out_come = JwtToken::decode_from_request(request);
+
+        match out_come {
+            Err(message) => assert_eq!("Could not decode", message),
+            _ => panic!("should be an error with a fake token")
+        }
+    }
+
+}

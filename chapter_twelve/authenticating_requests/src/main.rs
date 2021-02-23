@@ -6,6 +6,7 @@ extern crate pretty_env_logger;
 use diesel::prelude::*;
 extern crate dotenv;
 
+mod our_jwt;
 mod schema;
 mod to_do;
 mod json_serialization;
@@ -23,6 +24,7 @@ use json_serialization::to_do_items::ToDoItems;
 #[tokio::main]
 async fn main() {
     pretty_env_logger::init();
+
     let home = warp::path!("home")
         .map(|| "This is a Warp server built in Rust");
 
@@ -37,24 +39,33 @@ async fn main() {
             return warp::reply::json(&result)
         });
 
-    let get_items = warp::path!("user" / i32)
-        .map(|user_id: i32| {
-            let connection = establish_connection();
+    async fn get_items_reply(token: String) -> Result<Box<dyn warp::Reply>, warp::Rejection> {
+        match our_jwt::JwtToken::decode(token) {
+            Ok(token) => {
+                let connection = establish_connection();
 
-            let items = schema::to_do::table
-                .order(schema::to_do::columns::id.asc())
-                .filter(schema::to_do::columns::user_id.eq(&user_id))
-                .load::<Item>(&connection)
-                .unwrap();
+                let items = schema::to_do::table
+                    .order(schema::to_do::columns::id.asc())
+                    .filter(schema::to_do::columns::user_id.eq(&token.user_id))
+                    .load::<Item>(&connection)
+                    .unwrap();
 
-            let mut array_buffer = Vec::new();
+                let mut array_buffer = Vec::new();
 
-            for item in items {
-                let item = to_do_factory(&item.status, item.title).unwrap();
-                array_buffer.push(item);
+                for item in items {
+                    let item = to_do_factory(&item.status, item.title).unwrap();
+                    array_buffer.push(item);
+                }
+                return Ok(Box::new(warp::reply::json(&ToDoItems::new(array_buffer))))
+            },
+            Err(_message) => {
+                Ok(Box::new(warp::http::StatusCode::UNAUTHORIZED))
             }
-            return warp::reply::json(&ToDoItems::new(array_buffer))
-        });
+        }
+    }
+
+    let get_items = warp::path!("items")
+        .and(warp::header("user-token")).and_then(get_items_reply);
 
     let log = warp::log("to_do::api");
 
@@ -63,7 +74,7 @@ async fn main() {
             .or(greet)
             .or(add)
             .or(get_items)
-    ).with(log);
+    );
 
     warp::serve(routes)
         .run(([127, 0, 0, 1], 8000))
