@@ -1,7 +1,10 @@
 
 # Rust Web Programming
 
-<a href="https://www.packtpub.com/in/web-development/rust-web-programming?utm_source=github&utm_medium=repository&utm_campaign=9781786461629"><img src="https://www.packtpub.com/media/catalog/product/cache/4cdce5a811acc0d2926d7f857dceb83b/9/7/9781800560819-original_23.png" alt="Useful Links" height="256px" align="right"></a>
+<a href="https://www.packtpub.com/in/web-development/rust-web-programming?utm_source=github&utm_medium=repository&utm_campaign=9781786461629"><img src="https://www.packtpub.com/media/catalog/product/cache/4cdce5a811acc0d2926d7f857dceb83b/9/7/9781800560819-original_23.png" alt="Rust Web Programming" height="256px" align="right"></a>
+
+
+This is the code repository for [Rust Web Programming](https://www.packtpub.com/in/web-development/rust-web-programming?utm_source=github&utm_medium=repository&utm_campaign=9781786461629), published by Packt.
 
 ## Setup 
 
@@ -39,8 +42,6 @@ is a token for a user with the ID of one. This can be copied and pasted for use 
 eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo2fQ.uVo7u877IT2GEMpB_gxVtxhMAYAJD8W_XiUoNvR7_iM
 ```
 
-
-This is the code repository for [Rust Web Programming](https://www.packtpub.com/in/web-development/rust-web-programming?utm_source=github&utm_medium=repository&utm_campaign=9781786461629), published by Packt.
 
 **A hands-on guide to developing fast and secure web apps with the Rust programming language**
 
