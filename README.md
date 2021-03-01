@@ -1,7 +1,7 @@
 
 # Rust Web Programming
 
-<a href="https://www.packtpub.com/in/web-development/rust-web-programming?utm_source=github&utm_medium=repository&utm_campaign=9781786461629"><img src="" alt="Useful Links" height="256px" align="right"></a>
+<a href="https://www.packtpub.com/in/web-development/rust-web-programming?utm_source=github&utm_medium=repository&utm_campaign=9781786461629"><img src="https://www.packtpub.com/media/catalog/product/cache/4cdce5a811acc0d2926d7f857dceb83b/9/7/9781800560819-original_23.png" alt="Useful Links" height="256px" align="right"></a>
 
 ## Setup 
 
