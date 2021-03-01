@@ -73,6 +73,9 @@ let log = warp::log("to_do::api");
 **Following is what you need for this book:**
 This book on web programming with Rust is for web developers who have programmed in traditional languages such as Python, Ruby, JavaScript, and Java and are looking to develop high-performance web applications with Rust. Although no prior experience with Rust is necessary, a solid understanding of web development principles and basic knowledge of HTML, CSS, and JavaScript are required if you want to get the most out of this book.
 
+## Code in Action
+Please visit the following link to check the CiA videos: http://bit.ly/3jULCrw
+
 With the following software and hardware list you can run all code files present in the book (Chapter 1-11).
 ### Software and Hardware List
 | No | Software required | OS required |
@@ -84,6 +87,7 @@ With the following software and hardware list you can run all code files present
 
 
 We also provide a PDF file that has color images of the screenshots/diagrams used in this book. [Click here to download it](https://static.packt-cdn.com/downloads/9781800560819_ColorImages.pdf).
+
 
 ### Related products
 * Creative Projects for Rust Programmers [[Packt]](https://www.packtpub.com/product/creative-projects-for-rust-programmers/9781789346220?utm_source=github&utm_medium=repository&utm_campaign=9781789346220) [[Amazon]](https://www.amazon.com/dp/1789346223)
