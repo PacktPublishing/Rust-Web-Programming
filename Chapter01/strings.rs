@@ -4,7 +4,7 @@ fn print_string(input_string: String) {
     println!("{}", input_string);
 }
 
-/// This function is to demonstrate
+/// This function is to demonstrate the printing of a string literal reference
 fn print_str(input_str: &str) {
     println!("{}", input_str);
 }
