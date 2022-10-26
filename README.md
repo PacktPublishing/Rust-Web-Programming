@@ -97,3 +97,7 @@ We also provide a PDF file that has color images of the screenshots/diagrams use
 
 ## Get to Know the Author
 **Maxwell Flitton** is a Software Engineer who works at a financial tech company called Monolith AI. In 2011, Maxwell achieved his Bachelor of Science in Nursing degree from the University of Lincoln, UK. While working 12 hours shifts in the A and E departments of hospitals, Maxwell obtained another degree in Physics from The Open University in the UK and then moved one to another milestone, with a Postgrad Diploma in Physics and Engineering in Medicine from UCL in London. He developed an open source machine learning deployment software called DeployML which can be downloaded via pip and occasionally he teaches computational medicine at Imperial College London every now and then.
+### Download a free PDF
+
+ <i>If you have already purchased a print or Kindle version of this book, you can get a DRM-free PDF version at no cost.<br>Simply click on the link to claim your free PDF.</i>
+<p align="center"> <a href="https://packt.link/free-ebook/9781800560819">https://packt.link/free-ebook/9781800560819 </a> </p>
