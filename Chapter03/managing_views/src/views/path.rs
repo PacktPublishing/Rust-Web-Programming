@@ -19,7 +19,7 @@ impl Path {
     /// To use this in a route, we have to reference it:
     ///
     /// ```rust
-    /// let path = Path{base: String::from("/base/")};
+    /// let path = Path{prefix: String::from("/base/")};
     /// app.route(&path.define(String::from("tail/path")), web::get().to(login::login))
     /// ```
     pub fn define(&self, following_path: String) -> String {
